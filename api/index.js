@@ -7,14 +7,16 @@ dotenv.config();
 
 const app = express();
 
-// Connexion Mongo (serverless-safe)
+// Connexion Mongo
 connectDB();
 
 app.use(express.json());
 app.use("/api/users", userRoutes);
+
 app.get("/", (req, res) => {
   res.json({ message: "API is running" });
 });
+
 
 if (process.env.NODE_ENV !== "production") {
   const port = process.env.PORT || 3000;
